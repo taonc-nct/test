@@ -1,0 +1,4 @@
+docker run --rm -it --mount type=bind,source=E:\taonc\kubespray-master\kubespray-master\,dst=/kubespray  quay.io/kubespray/kubespray:v2.24.1 bash
+ansible cenos -i /kubespray/inventory/mycluster/inventory.ini -m ping
+
+ansible-playbook -i inventory/mycluster/inventory.ini  /playbook/play1.yaml

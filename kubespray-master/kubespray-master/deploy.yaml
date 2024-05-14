@@ -1,0 +1,5 @@
+---
+- hosts: cenos
+  become: yes
+  roles:
+    - { role: base_httpd }

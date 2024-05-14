@@ -1,0 +1,6 @@
+# Example:
+- name: Print hello mesage
+  hosts: all
+  tasks:
+  - debug:
+      var: ansible_facts

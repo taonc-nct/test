@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Tạo máy ảo từ box centos/7, gán địa chỉ IP, đặt hostname, gán 2GB bộ nhớ, 2 cpus  
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+  config.vm.network "private_network", ip: "172.16.10.101"
+  config.vm.hostname = "taonc.xtl"
+
+  config.vm.provider "virtualbox" do |vb|
+     vb.name = "taonc2.xtl"
+     vb.cpus = 1
+     vb.memory = "1024"
+  end
+
+  # Chạy các lệnh shell
+  config.vm.provision "shell", inline: <<-SHELL
+    # Đặt pass 123 có tài khoản root và cho phép SSH
+    echo "1" | passwd --stdin root
+    sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+    systemctl reload sshd
+# Ghi nội dung sau ra file /etc/hosts để truy cập được các máy theo HOSTNAME
+cat >>/etc/hosts<<EOF
+172.16.10.100 taonc.xtl
+EOF
+  SHELL
+end
