@@ -1,4 +1,4 @@
 ---
 # tasks file for base_httpd
 
-- include: httpd.yaml
+- include: httpd.yml
