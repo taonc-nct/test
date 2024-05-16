@@ -2,3 +2,15 @@ docker run --rm -it --mount type=bind,source=E:\taonc\kubespray-master\kubespray
 ansible cenos -i /kubespray/inventory/mycluster/inventory.ini -m ping
 
 ansible-playbook -i inventory/mycluster/inventory.ini  /playbook/play1.yaml
+
+
+docker run --rm -it --mount type=bind,source=E:\taonc\kubespray-master\kubespray-master\,dst=/kubespray  quay.io/kubespray/kubespray:v2.24.1 bash
+Chạy lệnh đầu tiên:
+ansible cenos -i /kubespray/inventory/mycluster/inventory.ini -m ping
+  - Với cenos là tên một cụm server tên cenos trong file inventory.ini
+
+ansible-playbook -i inventory/mycluster/inventory.ini  /playbook/play1.yaml
+
+playbook.yaml syntax-check
+
+ansible-playbook -i inventory/mycluster/inventory.ini /kubespray/deploy.yaml 

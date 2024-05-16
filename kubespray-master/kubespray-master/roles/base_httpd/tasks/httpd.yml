@@ -2,9 +2,9 @@
 - name: Install httpd Package
   yum: name=httpd state=latest
 - name: copy httpd configuration file
-  copy: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf
+  copy: src=templates/httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf
 - name: copy index configuration
-  copy: src=index.html dest=/var/www/html/index.html
+  copy: src=files/index.html dest=/var/www/html/index.html
 - name: Start and Enable httpd service
   service: 
     name: httpd 
